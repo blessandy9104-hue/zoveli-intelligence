@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "zoveli-intelligence": {
+      "command": "zoveli-intel",
+      "args": ["mcp", "--root", "/Users/me/notes", "--data-dir", "/Users/me/.zoveli/intelligence"]
+    }
+  }
+}

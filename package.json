@@ -1,0 +1,72 @@
+{
+  "name": "@zoveli/intelligence",
+  "version": "0.1.0",
+  "description": "Local-first intelligence subsystem: grounded documents, deterministic market analysis, planning, preferences, and hash-chained receipts",
+  "type": "module",
+  "sideEffects": false,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./mcp": {
+      "types": "./dist/mcp.d.ts",
+      "import": "./dist/mcp.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "zoveli-intel": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "docs",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "SECURITY.md",
+    "CONTRIBUTING.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blessandy9104-hue/zoveli-intelligence.git"
+  },
+  "homepage": "https://github.com/blessandy9104-hue/zoveli-intelligence#readme",
+  "bugs": {
+    "url": "https://github.com/blessandy9104-hue/zoveli-intelligence/issues"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepare": "npm run build",
+    "pretest": "npm run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "npm run typecheck && npm test && npm run build",
+    "prepack": "npm run build",
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\""
+  },
+  "keywords": [
+    "zoveli",
+    "intelligence",
+    "local-first",
+    "personal-assistant",
+    "rag",
+    "bm25",
+    "market-analysis",
+    "mcp",
+    "privacy"
+  ],
+  "author": "Andy <blessandy9104@gmail.com> (https://github.com/blessandy9104-hue)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.16.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.16.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.12"
+  }
+}
