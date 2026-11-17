@@ -52,7 +52,7 @@ describe('zoveli-intel CLI', () => {
 
     const version = run(['--version']);
     expect(version.status).toBe(0);
-    expect(version.stdout.trim()).toBe('0.1.0');
+    expect(version.stdout.trim()).toBe('0.1.1');
   });
 
   it('reports status as JSON', () => {

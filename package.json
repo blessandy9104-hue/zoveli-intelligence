@@ -1,6 +1,6 @@
 {
   "name": "@zoveli/intelligence",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Local-first intelligence subsystem: grounded documents, deterministic market analysis, planning, preferences, and hash-chained receipts",
   "type": "module",
   "sideEffects": false,
@@ -9,11 +9,13 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./mcp": {
       "types": "./dist/mcp.d.ts",
-      "import": "./dist/mcp.js"
+      "import": "./dist/mcp.js",
+      "default": "./dist/mcp.js"
     },
     "./package.json": "./package.json"
   },

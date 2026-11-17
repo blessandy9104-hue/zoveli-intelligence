@@ -69,7 +69,7 @@ at 26 plugins and lets the intelligence subsystem evolve independently.
 
 The adapter:
 
-- imports `@zoveli/intelligence` from the tagged GitHub release;
+- imports `@zoveli/intelligence` from a pinned release tarball;
 - creates one governor per host process;
 - registers the 16 tools under `assistant-intelligence-tools`;
 - provides an `intelligence` service with `status()` and `verifyAudit()`;
@@ -101,15 +101,20 @@ Dependency pinning:
 ```json
 {
   "dependencies": {
-    "@zoveli/intelligence": "github:blessandy9104-hue/zoveli-intelligence#v0.1.0"
+    "@zoveli/intelligence": "file:../../vendor/zoveli-intelligence-0.1.1.tgz"
   }
 }
 ```
 
-Use a tag or commit, never a moving branch, so installs are reproducible. The
-package has zero runtime dependencies; its `prepare` script builds `dist` from
-TypeScript during git installation. In a network-restricted environment, pack
-the package once and depend on the tarball with `file:` instead.
+The Zoveli workspace vendors the packed release tarball because pnpm 11 does
+not persist integrity for remote tarball URLs, which breaks
+`--frozen-lockfile` installs. A `file:` tarball records `sha512` integrity and
+installs offline. The tarball contains the built `dist/`, so no build script
+runs during installation and no `allowBuilds` entry is required.
+
+For a generic host, pin the release asset URL or a tag/commit instead, never a
+moving branch. Remote URLs still require a host that can verify or accept the
+artifact; in a restricted environment, vendor the tarball as Zoveli does.
 
 ### What the agent is told
 
@@ -144,8 +149,10 @@ but not the source files. Deleting `audit.jsonl` destroys receipt history
 ## Compatibility
 
 - Node.js 22.16+ (tested on 22 and 24).
-- ESM only. TypeScript consumers need `module: NodeNext` or a bundler that
-  respects `exports`.
+- ESM source. TypeScript consumers need `module: NodeNext` or a bundler that
+  respects `exports`. CommonJS hosts on Node 22.16+ can `require()` the package
+  through the `default` export condition (Node's `require(esm)` support); use
+  the `import` condition in bundlers.
 - MCP protocol versions accepted on initialize: `2025-06-18`, `2025-03-26`,
   `2024-11-05`.
 

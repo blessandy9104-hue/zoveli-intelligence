@@ -4,6 +4,19 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [0.1.1] — 2026-11-16
+
+### Added
+
+- `default` export conditions for `.` and `./mcp`, so CommonJS hosts on
+  Node.js 22.16+ can load the ESM package with `require()` (Node's
+  `require(esm)` support). Bundlers should keep using the `import` condition.
+
+### Changed
+
+- Documented the Zoveli adapter's vendored-tarball install and the pnpm
+  integrity constraint that motivates it.
+
 ## [0.1.0] — 2026-11-13
 
 ### Added

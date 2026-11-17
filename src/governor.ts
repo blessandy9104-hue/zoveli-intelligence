@@ -21,7 +21,7 @@ import type {
   VerificationLevel,
 } from './types.js';
 
-export const INTELLIGENCE_VERSION = '0.1.0';
+export const INTELLIGENCE_VERSION = '0.1.1';
 export const INTELLIGENCE_NAME = '@zoveli/intelligence';
 
 const TIER_ORDER: Record<ModelTier, number> = { tiny: 0, small: 1, medium: 2, large: 3 };
